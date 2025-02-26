@@ -31,7 +31,7 @@ def Merge(A,p,q,r):
 def MergeSort(A,p,r):
 	#We know that 0<=p<=r<=N-1
 	if p < r:
-		q = int((p+r)/2)
+		q = int((p+r)/2) #q satisfies the necessary conditions for Merge function
 		MergeSort(A,p,q)
 		MergeSort(A,q+1,r)
 		Merge(A,p,q,r)
