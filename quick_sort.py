@@ -2,7 +2,7 @@ import random as rd
 
 
 
-def QuickSort(A,start,end):
+def Partition(A,start,end):
 	#to sort entire A is to sort A from 0 to len(A)-1
 	if start < end:
 		p = rd.randint(start,end)
@@ -14,9 +14,15 @@ def QuickSort(A,start,end):
 				A[p],A[ind] = A[ind],A[p]
 				p += 1
 		A[end],A[p] = A[p],A[end]
-		QuickSort(A,start,p-1)
-		QuickSort(A,p+1,end)
-	return A
+		return p
+
+def QuickSort(A,start,end):
+	if start < end:
+		pivot_index = Partition(A,start,end)
+		QuickSort(A,start,pivot_index-1)
+		QuickSort(A,pivot_index+1,end)
+
+
 
 some_ar = [rd.randint(1,101) for _ in range(100000)]
 print(some_ar)
