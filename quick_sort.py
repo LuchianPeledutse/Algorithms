@@ -17,14 +17,12 @@ def Partition(A,start,end):
 		return p
 
 def QuickSort(A,start,end):
+	if (end-start) <= 10:
+		pass
 	if start < end:
 		pivot_index = Partition(A,start,end)
 		QuickSort(A,start,pivot_index-1)
 		QuickSort(A,pivot_index+1,end)
 
 
-
-some_ar = [rd.randint(1,101) for _ in range(100000)]
-print(some_ar)
-QuickSort(some_ar,0,len(some_ar)-1)
-print(some_ar)
+	
