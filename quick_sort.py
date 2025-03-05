@@ -1,6 +1,6 @@
 import random as rd 
-
-
+import sys 
+sys.setrecursionlimit(3000)
 
 def Partition(A,start,end):
 	#to sort entire A is to sort A from 0 to len(A)-1
