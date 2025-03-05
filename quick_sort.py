@@ -23,6 +23,3 @@ def QuickSort(A,start,end):
 		pivot_index = Partition(A,start,end)
 		QuickSort(A,start,pivot_index-1)
 		QuickSort(A,pivot_index+1,end)
-
-
-	
