@@ -34,12 +34,19 @@ def MAXSUB(A):
 
 		while new_ind < N:
 			if A[new_ind] >= 0:
-				if total_sum-max_sum < 0 and abs(total_sum-max_sum) > max_sum:
+				diff = total_sum-max_sum
+				abs_diff = abs(diff)
+				# print(diff)
+				# print(abs_diff)
+				if diff < 0 and abs_diff > max_sum:
 					old_ind = new_ind
 					pos_sum = 0
-					while old_ind < N and A[old_ind] >= 0:
-						pos_sum += A[old_ind]
-						old_ind += 1
+					while old_ind < N and pos_sum >= 0:
+						if pos_sum >= max_sum:
+							break
+						else:
+							pos_sum += A[old_ind]
+							old_ind += 1
 					old_ind -= 1
 
 					if pos_sum >= max_sum:
@@ -71,14 +78,15 @@ def MAXSUB(A):
 
 
 
-# some_ar = [-1,2,-1,-1,3,7,-18,9,-9]
+# some_ar = [-34, -1, -1, 25, -29, -28, 42, -20, 37, -31]
+# print(some_ar)
 # print(MAXSUB(some_ar))
 # print(MaxSub(some_ar,0,len(some_ar)-1))
 
 def test(N = 10):
 	for _ in range(N):
-		some_rand = [rd.randint(-50,50) for _ in range(10)]
-		# print(some_rand)
+		R = rd.randint(1,25)
+		some_rand = [rd.randint(-50,50) for _ in range(R)]
 		t1 = MAXSUB(some_rand)
 		t2 = MaxSub(some_rand,0,len(some_rand)-1)
 		if t1[-1] == t2[-1]:
@@ -87,4 +95,5 @@ def test(N = 10):
 			print('\n\n###WRONG###')
 			print(some_rand)
 			print(t1,t2,end = '\n\n')
-test(25)
+			break
+test(1_000)
